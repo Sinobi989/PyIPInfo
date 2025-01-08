@@ -4,8 +4,8 @@ import vt
 import asyncio
 from aiohttp import ClientSession
 
-Shodan_API_Key = "gi5DxmZgO9LtmnS3p7AMbSEYAPu0sJNI"  # Replace with your Shodan API key
-VT_API_KEY = "412f31d3b588185f6c44614155f04cc27be542715f549360c7ba4586aa82cc1a"  # Replace with your VirusTotal API key
+Shodan_API_Key = ""  # Replace with your Shodan API key
+VT_API_KEY = ""  # Replace with your VirusTotal API key
 
 
 def ping(IP):
