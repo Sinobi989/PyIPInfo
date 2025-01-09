@@ -1,8 +1,12 @@
 import subprocess
 import shodan
+import requests
+import re
 import vt
 import asyncio
+import requests
 from aiohttp import ClientSession
+from bs4 import BeautifulSoup
 
 Shodan_API_Key = ""  # Replace with your Shodan API key
 VT_API_KEY = ""  # Replace with your VirusTotal API key
@@ -42,15 +46,36 @@ async def VT_Check(IP, session):
         print(f"Error: {e}")
         return 0, []
 
-
 async def main():
     async with ClientSession() as session:
         while True:
             IP_address = input("Enter IP address: \n")
 
             if ping(IP_address):
+                print("\n--- Connectivity ---")
                 print(f"{IP_address} is reachable")
+                #Perform spur.us VPN/proxy check
+                print("\n--- VPN\Proxy check ---")
+                URL = f"https://spur.us/context/{IP_address}"
+                html_response = requests.get(URL)
+                if html_response.status_code == 200:
+                    html_content = html_response.text
+                    soup = BeautifulSoup(html_content, 'html.parser')
+                    Soup_tag = soup.h2
+                    icon_tag = Soup_tag.find('i', class_='fas fa-ethernet')
+                    if icon_tag:
+                        icon_tag.extract()
 
+                    # Remove extra whitespace
+                    cleaned_text = Soup_tag.get_text().strip()
+
+                    # Remove extra spaces and hyphens
+                    cleaned_text = re.sub(r'\s+', ' ', cleaned_text)
+                    cleaned_text = re.sub(r'-+', '-', cleaned_text)
+                    String = Soup_tag.text
+                    print(cleaned_text)
+                else:
+                    print("Connectivity issue to Spur.us")
                 # Perform VirusTotal check asynchronously
                 positives = await VT_Check(IP_address, session)
 
@@ -62,7 +87,7 @@ async def main():
                 host = Shodan_Check(IP_address)
                 if host:
                     # Print host information
-                    print("--- Host Information ---")
+                    print("\n--- Host Information ---")
                     print("IP Address:", host['ip_str'])
                     print("Organization:", host.get('org', 'Unknown'))
                     print("Operating System:", host.get('os', 'Unknown'))
@@ -73,7 +98,6 @@ async def main():
                         print("Hostname: Not found")
                     for item in host['ports']:
                         print(item)
-                    #print("Data:", host.get('data', {}))
 
                 Continue = input("\n Check another IP?(Y/N) \n")
                 if Continue == "N":
