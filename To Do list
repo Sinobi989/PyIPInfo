@@ -1,0 +1,4 @@
+* Add the option to use a file.
+* Add connections monitoring for IP list.
+* Add an option to loop on a system log files.
+* add a notification integration to Slack or WhatsApp in case of a malicious IP connection.
