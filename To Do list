@@ -4,3 +4,4 @@
 * add a notification integration to Slack or WhatsApp in case of a malicious IP connection.
 * add an option to skip certain APIs.
 * Switch web scraping to Spur API.
+* Add option to add API keys after first scan manually
