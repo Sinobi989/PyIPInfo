@@ -14,8 +14,6 @@ Shodan_API_Key = ""  # Replace with your Shodan API key
 VT_API_KEY = ""  # Replace with your VirusTotal API key
 AbuseIPDB_API_KEY = ""  # Replace with your AbuseIPDB API key
 
-
-
 def ping(IP):
     try:
         subprocess.check_output(['ping', '-n', '1', IP], shell=True)
