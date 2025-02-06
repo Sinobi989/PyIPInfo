@@ -5,3 +5,4 @@
 * add an option to skip certain APIs.
 * Switch web scraping to Spur API.
 * Add option to add API keys after first scan manually
+* Make an automation to copy the IP from clipboard and check it automaticlly and add it to check IP list
