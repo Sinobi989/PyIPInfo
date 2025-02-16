@@ -1,4 +1,4 @@
-# PyIP
+# PyIPInfo
 
 
 This is my first ever public Python project. It is intended for blue teamers to check the reputation and details of a given IPv4(IPv6 support will be added in the future) address using freely available API keys and public information sources. It then displays a comprehensive report in the console.
