@@ -44,9 +44,14 @@ API keys can be obtained freely upon registering to the relevant websites.
 
    ![image](https://github.com/user-attachments/assets/8d2a9f53-29c1-4f75-9f3b-28b160284626)
 
-3. **Run main.py using python:**
+3. **Install requirements using pip:**
+   ```python
+   python pip install -r PathTo/requirements.txt
+5. **Run main.py using python:**
 
    ![image](https://github.com/user-attachments/assets/d78602b8-087c-43f6-aca3-29be4ac75f7f)
+
+
 
 ## Output example
 
