@@ -37,7 +37,7 @@ API keys can be obtained freely upon registering to the relevant websites.
 
    ```bash
 
-   git clone https://github.com/Sinobi989/PyIP.git
+   git clone https://github.com/Sinobi989/PyIPInfo.git
 
 2. **Edit main.py to insert your API keys:**
 
